@@ -41,6 +41,20 @@ function createTodo(title) {
   $("#todolist").append( listItem );
 
   updateCounters();
+  var newTodo = { title: title, completed: false };
+
+    $.ajax({
+      type: "POST",
+      url: "/todos.json",
+      data: JSON.stringify({
+          todo: newTodo
+      }),
+      contentType: "application/json",
+      dataType: "json"})
+
+      .fail(function(error) {
+        console.log(error);
+      });
 }
 
 function submitTodo(event) {
