@@ -41,6 +41,7 @@ function createTodo(title) {
   $("#todolist").append( listItem );
 
   updateCounters();
+}
   var newTodo = { title: title, completed: false };
 
     $.ajax({
@@ -55,6 +56,16 @@ function createTodo(title) {
       .fail(function(error) {
         console.log(error);
       });
+
+      function showError(message) {
+      $("#todo_title").addClass("error");
+
+      var errorElement = $("<small></small>")
+        .attr('id', 'error_message')
+        .addClass('error')
+        .html(message);
+
+      $(errorElement).appendTo('form .field');
 }
 
 function submitTodo(event) {
