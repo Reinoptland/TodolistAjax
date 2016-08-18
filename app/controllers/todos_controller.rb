@@ -7,7 +7,10 @@ class TodosController < ApplicationController
     @todo = Todo.new
     @todos = Todo.all
 
-    render json: @todos
+    respond_to do |format|
+    format.html {render :index}
+    format.json {render json: @todos}
+    end
   end
 
   # GET /todos/1
