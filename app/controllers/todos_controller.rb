@@ -4,7 +4,13 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
+    @todo = Todo.new
     @todos = Todo.all
+
+    respond_to do |format|
+    format.html {render :index}
+    format.json {render json: @todos}
+    end
   end
 
   # GET /todos/1
@@ -15,6 +21,8 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
+
+
   end
 
   # GET /todos/1/edit
@@ -28,7 +36,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
+        format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new }
