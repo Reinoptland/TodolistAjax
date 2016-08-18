@@ -6,6 +6,8 @@ class TodosController < ApplicationController
   def index
     @todo = Todo.new
     @todos = Todo.all
+
+    render json: @todos
   end
 
   # GET /todos/1
@@ -16,6 +18,8 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
+
+
   end
 
   # GET /todos/1/edit
