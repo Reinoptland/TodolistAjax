@@ -47,12 +47,14 @@ feature 'Manage tasks', js: true do
       check('todo-1')
       check('todo-2')
 
-      
+      sleep(1)
+
+      click_link('clean-up')
 
       sleep(1)
 
-      expect( page.find(:css, 'span#total-count').text).to eq "3"
-      expect( page.find(:css, 'span#completed-count').text). to eq "2"
+      expect( page.find(:css, 'span#total-count').text).to eq "1"
+      expect( page.find(:css, 'span#completed-count').text). to eq "0"
       expect( page.find(:css, 'span#todo-count').text ).to eq "1"
 
     end
